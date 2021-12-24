@@ -2,7 +2,7 @@ CC = @gcc
 
 CFLAGS = -Wextra -Werror -Wall -g
 
-SRC = push_swap.c
+SRC = push_swap.c moves.c
 
 NAME = a.out
 

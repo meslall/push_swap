@@ -16,63 +16,26 @@ t_list	*push_swap (char **list, int ac)
 	}
 	return (a);
 }
-void	sa_sb(t_list *node)
-{
-	t_list	*first;
-	t_list	*second;
-	int		temp;
-
-	first = node;
-	second = first->next;
-	temp = first->content;
-	first->content = second->content;
-	second->content = temp;
-}
-void	ra_rb(t_list *node)
-{
-	t_list	*first;
-	t_list	*last;
-	int		temp;
-
-	first = node;
-	last = first;
-	while (last->next != NULL)
-	{
-		last = last->next;
-	}
-	temp = last->content;
-	last->content = first->content;
-	first->content = temp;
-}
-
-void	rra_rrb(t_list *node)
-{
-		t_list	*first;
-	t_list	*last;
-	int		temp;
-
-	first = node;
-	last = first;
-	while (last->next != NULL)
-	{
-		last = last->next;
-	}
-	temp = first->content;
-	first->content = last->content;
-	last->content = temp;
-}
 
 int main (int ac, char **av)
 {
 	t_list *head;
+	t_list *b = NULL;
 	head = push_swap(av, ac);
-	sa_sb(head);
-	ra_rb(head);
-	rra_rrb(head);
+	sa_sb(&head);
+	ra_rb(&head);
+	rra_rrb(&head);
+	pa_pb(&b,&head);
 	while (head)
 	{
 		printf("%d\n", head->content);
 		head = head->next;
 	}
-
+	printf("---");
+	while (b)
+	{
+		printf("\n%d", b->content);
+		b = b->next;
+	}
+	
 }
