@@ -2,7 +2,7 @@ CC = @gcc
 
 CFLAGS = -Wextra -Werror -Wall -g
 
-SRC = push_swap.c moves.c
+SRC = push_swap.c ft_check.c ft_creation.c ft_quick_sort.c ft_sort1.c ft_sort2.c moves1.c \
 
 NAME = a.out
 
@@ -13,6 +13,9 @@ MKF = @cd libft && make && make bonus && cd ..
 
 RM = @rm -f
 
+CLF = @cd libft && make clean && cd ..
+
+RMF = @cd libft && make fclean && cd ..
 
 all:	$(NAME)
 
@@ -21,10 +24,11 @@ $(NAME):
 			$(CC) $(CFLAGS) $(LIBFT) $(SRC) -o $(NAME)
 
 clean: 
-		@cd libft && make clean && cd ..
+		$(CLF)
 		$(RM) $(NAME)
 
 fclean: clean 
-		$(RM) $(NAME)
+		$(RMF)
+		$(RM) $(NAME) 
 
 re:			fclean all

@@ -1,41 +1,48 @@
 #include <stdio.h>
 #include "push_swap.h"
-t_list	*push_swap (char **list, int ac)
+void	ft_sort(t_list **a, t_list **b, t_data **data, int argc)
 {
-	int i;
-	t_list *a;
-	t_list *new;
-
-	i = 1;
-	a = NULL;
-	while (i < ac)
-	{
-		new = ft_lstnew(ft_atoi(list[i]));
-		ft_lstadd_back(&a, new);
-		i++;
-	}
-	return (a);
+	ft_stack_data(a, data);
+	(*data)->main_min = (*data)->min;
+	if (argc <= 3)
+		sa(a,  1);
+	else if (argc <= 4)
+		ft_sort_three(a);
+	else if (argc <= 5)
+		ft_sort_four(a, b, data);
+	else if (argc <= 6)
+		ft_sort_five(a, b, data);
+	else 
+		ft_large_sort(a, b, data);
 }
 
-int main (int ac, char **av)
+void	ft_main(t_list **a, t_list **b, t_data **data, int ac)
 {
-	t_list *head;
-	t_list *b = NULL;
-	head = push_swap(av, ac);
-	sa_sb(&head);
-	ra_rb(&head);
-	rra_rrb(&head);
-	pa_pb(&b,&head);
-	while (head)
+	ft_index(a, b, data);
+	if (ac == 2 || ft_stack_sorted(a))
+		ft_free(*a, *b, *data, 0);
+	ft_sort(a, b, data, ac);
+}
+
+int	main(int ac, char **av)
+{
+	t_list	*a;
+	t_list	*b;
+	t_data	*data;
+
+	if (ac < 2)
+		exit(1);
+	if (!ft_check(ac, av))
 	{
-		printf("%d\n", head->content);
-		head = head->next;
+		ft_putstr_fd("Error\n",1);
+		return (0);
 	}
-	printf("---");
-	while (b)
-	{
-		printf("\n%d", b->content);
-		b = b->next;
-	}
-	
+	if (!ft_value(ac, av))
+		return (0);
+	b = NULL;
+	a = ft_stack(ac, av);
+	data = ft_data();
+ 	ft_main(&a, &b, &data, ac);
+	ft_error(a, b, data, 0);
+	return (0);
 }
