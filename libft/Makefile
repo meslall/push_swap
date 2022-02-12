@@ -10,7 +10,7 @@ SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 
 OBJS	= $(SRCS:.c=.o)
 
- BONUS_S	= ft_lstadd_back_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c \
+ BONUS_S	= ft_lstadd_back_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstlast_bonus.c \
 
 BONUS_O	= $(BONUS_S:.c=.o)
 
@@ -29,23 +29,23 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			$(AR) $(NAME) $(OBJS)
-			@echo "LIBFT CREATED !"
+			@echo "\033[0;92m{LIBFT} PROJECT FILE CREATED ✅"
 
 bonus:	$(BONUS_O)
 
 $(BONUS_O) : $(BONUS_S)
 			$(CC) $(CFLAGS) $(BONUS_S)
 			$(AR) $(NAME) $(BONUS_O)
-			@echo "BONUS CREATED !"
+			@echo "\033[0;92m{LIBFT} BONUS CREATED ✅"
 
 
 clean:
 			$(RM) $(OBJS) $(BONUS_O)
-			@echo "Objects Deleted!"
+			@echo "\033[0;93m{LIBFT} OBJECTS DELETED ❌"
 
 fclean:		clean
 			$(RM) $(NAME)
-			@echo "Project File Deleted!"
+			@echo "\033[0;93m{LIBFT} PROJECT File DELETED ❌"
 
 re:			fclean all
 

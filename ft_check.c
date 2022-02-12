@@ -6,11 +6,12 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:44:32 by omeslall          #+#    #+#             */
-/*   Updated: 2022/01/31 16:44:44 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/02/12 00:18:43 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
 int	ft_valid(const char *str)
 {
 	int	i;
@@ -61,8 +62,9 @@ int	ft_wts(const char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n' || str[i] == '\r' || str[i] == '\t'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+		if ((str[i] == '\n' || str[i] == '\r' || str[i] == '\t'
+				|| str[i] == '\v' || str[i] == '\f'
+				|| str[i] == ' ') && str[i + 1] != '\0')
 			i++;
 		else
 			return (1);
@@ -79,6 +81,8 @@ int	ft_check(int argc, char **argv)
 	n = 0;
 	while (i < argc)
 	{
+		if (argv[i][0] == '\0')
+			return (0);
 		if (ft_wts(argv[i]))
 		{
 			if (ft_isnumber(argv[i]))
@@ -98,8 +102,8 @@ int	ft_check(int argc, char **argv)
 
 int	ft_value(int argc, char **argv)
 {
-	int		i;
-	long	nbr;
+	int			i;
+	long long	nbr;
 
 	i = 1;
 	while (i < argc)
@@ -107,7 +111,7 @@ int	ft_value(int argc, char **argv)
 		nbr = ft_atoi(argv[i]);
 		if (nbr > 2147483647 || nbr < -2147483648)
 		{
-			ft_putstr_fd("\x1b[31mError\x1b[0m\n",1);
+			ft_putstr_fd("Error\n", 1);
 			return (0);
 		}
 		i++;

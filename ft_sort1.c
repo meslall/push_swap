@@ -6,7 +6,7 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:45:14 by omeslall          #+#    #+#             */
-/*   Updated: 2022/01/31 16:45:15 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/02/12 00:52:46 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_stack_sorted(t_list **lst)
 	temp = (*lst);
 	while (temp->next != NULL)
 	{
-		if(temp->content > temp->next->content)
+		if (temp->content > temp->next->content)
 			return (0);
 		temp = temp->next;
 	}
@@ -28,7 +28,9 @@ int	ft_stack_sorted(t_list **lst)
 
 void	ft_sort_three(t_list **a)
 {
-	if (((*a)->content > (*a)->next->content)
+	while (!ft_stack_sorted(a))
+	{
+		if (((*a)->content > (*a)->next->content)
 			&& ((*a)->content > (*a)->next->next->content)
 			&& (*a)->next->content < (*a)->next->next->content)
 			ra(a, 1);
@@ -39,11 +41,12 @@ void	ft_sort_three(t_list **a)
 		else if (((*a)->content > (*a)->next->content)
 			|| ((*a)->content < (*a)->next->content))
 			sa(a, 1);
+	}
 }
 
 void	ft_sort_four(t_list **a, t_list **b, t_data **data)
 {
-	while (ft_lstsize(a) != 3)
+	while (ft_lstsize(*a) != 3)
 	{
 		if ((*a)->index == 0 || (*a)->index == 3)
 			pb(a, b, 1);
@@ -65,9 +68,9 @@ void	ft_sort_five(t_list **a, t_list **b, t_data **data)
 {
 	while (ft_lstsize(*a) > 3)
 	{
-		if((*a)->index == 0 || (*a)->index == 4)
-			pb(a, b);
-		else if(ft_lstlast(*a)->index == 0 
+		if ((*a)->index == 0 || (*a)->index == 4)
+			pb(a, b, 1);
+		else if (ft_lstlast(*a)->index == 0
 			|| ft_lstlast(*a)->index == 4)
 		{
 			rra(a, 1);

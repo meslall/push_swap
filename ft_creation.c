@@ -6,13 +6,13 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:44:58 by omeslall          #+#    #+#             */
-/*   Updated: 2022/01/31 16:44:59 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/02/12 00:20:07 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_list *ft_stack(int ac, char **av)
+t_list	*ft_stack(int ac, char **av)
 {
 	int		i;
 	t_list	*new;
@@ -23,37 +23,38 @@ t_list *ft_stack(int ac, char **av)
 	while (i < ac)
 	{
 		new = ft_lstnew(ft_atoi(av[i]));
-		ft_lstadd_back(&a,new);
+		ft_lstadd_back(&a, new);
 		i++;
 	}
-	return(a);
+	return (a);
 }
 
-t_data	*ft_data()
+t_data	*ft_data(void)
 {
-	t_data *data;
+	t_data	*data;
+
 	data = malloc(sizeof(t_data));
 	data->main_min = 0;
 	data->min = 0;
 	data->mid = 0;
 	data->max = 0;
-	return(data);
+	return (data);
 }
 
-void	ft_free(t_list *a, t_list *b, t_data *data, int i)
+void	tf_free(t_list *a, t_list *b, t_data *data, int i)
 {
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 	free(data);
 	if (i == 1)
-		ft_putstr_fd("Error\n",1);
+		ft_putstr_fd("Error\n", 1);
 	exit(1);
 }
 
 void	ft_stack_data(t_list **lst, t_data **data)
 {
-	t_list *temp;
-	int 	*arr;
+	t_list	*temp;
+	int		*arr;
 	int		i;
 
 	i = 0;

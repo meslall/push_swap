@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 00:21:02 by omeslall          #+#    #+#             */
-/*   Updated: 2021/12/20 22:09:47 by omeslall         ###   ########.fr       */
+/*   Created: 2022/02/12 01:00:02 by omeslall          #+#    #+#             */
+/*   Updated: 2022/02/12 01:04:38 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include"push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ss(t_list **a, t_list **b, int n)
 {
-	t_list	*last;
-
-	last = *lst;
-	if (!*lst)
-	{
-		*lst = new;
+	if (((*a == NULL) || (ft_lstsize(*a) < 2))
+		&& ((*b == NULL) || ft_lstsize(*b) < 2))
 		return ;
-	}
-	while (last->next != NULL)
-	{
-		last = last->next;
-	}
-	last->next = new;
+	sa(a, n);
+	sb(b, n);
+	if (n == 1)
+		write(1, "ss\n", 3);
 }

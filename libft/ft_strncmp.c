@@ -6,7 +6,7 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 20:53:21 by omeslall          #+#    #+#             */
-/*   Updated: 2021/11/10 20:53:22 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/02/10 02:36:19 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,3 @@ int	ft_strncmp(const char *f, const char *s, size_t n)
 	}
 	return (0);
 }
-// int main()
-// {
-// 	char *s1="";
-// 	char *s2="oussama";
-// 	printf("%d\n",ft_strncmp("test200", "test/0", 6));
-// 	printf("%d",strncmp("test200", "test/0", 6));
-// }
